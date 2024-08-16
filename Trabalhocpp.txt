@@ -1,0 +1,43 @@
+from queue import Queue
+from collections import deque
+
+def inverter_fila(fila):
+    # Inicializar a pilha
+    pilha = deque()
+    
+    # Remover elementos da fila e empilhá-los
+    while not fila.empty():
+        elemento = fila.get()
+        pilha.append(elemento)
+    
+    # Desempilhar os elementos e enfileirá-los de volta na fila
+    while len(pilha) > 0:
+        elemento = pilha.pop()
+        fila.put(elemento)
+
+# Exemplo de uso
+fila = Queue()
+
+# Adicionar elementos à fila
+fila.put(1)
+fila.put(2)
+fila.put(3)
+fila.put(4)
+
+print("Fila antes de inverter:")
+while not fila.empty():
+    print(fila.queue[0])
+    fila.get()
+
+# Reinserindo os valores na fila para a inversão
+fila.put(1)
+fila.put(2)
+fila.put(3)
+fila.put(4)
+
+# Inverter a fila
+inverter_fila(fila)
+
+print("\nFila depois de inverter:")
+while not fila.empty():
+    print(fila.get())
